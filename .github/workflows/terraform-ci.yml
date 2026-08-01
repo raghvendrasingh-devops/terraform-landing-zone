@@ -1,10 +1,6 @@
 name: Terraform CI
 
 on:
-  push:
-    branches:
-      - main
-
   workflow_dispatch:
 
 jobs:
@@ -18,10 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: hashicorp/setup-terraform@v3
+      - name: Show Current Directory
+        run: pwd
 
-      - name: Terraform Version
-        run: terraform version
+      - name: List Files
+        run: ls -la
+
+      - name: List Repository
+        run: find . -maxdepth 2 -type f
+
+      - uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
         run: terraform init
@@ -30,4 +32,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -var-file="terraform.tfvars" -input=false
+        run: terraform plan -var-file=terraform.tfvars
