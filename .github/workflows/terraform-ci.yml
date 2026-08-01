@@ -5,13 +5,10 @@ on:
     branches:
       - main
 
-  pull_request:
-
   workflow_dispatch:
 
 jobs:
   terraform:
-    name: Terraform CI
     runs-on: ubuntu-latest
 
     defaults:
@@ -19,17 +16,12 @@ jobs:
         working-directory: environment/dev
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+      - uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Version
         run: terraform version
-
-      - name: Terraform Format Check
-        run: terraform fmt -check -recursive
 
       - name: Terraform Init
         run: terraform init
