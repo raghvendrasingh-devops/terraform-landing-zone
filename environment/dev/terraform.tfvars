@@ -7,6 +7,10 @@ resource_group = {
    name = "dev_rg-02"
     location = "eastus"
   }
+  dev_03 = {
+   name = "dev_rg-02"
+    location = "eastus"
+  }
 }
 
 virtual_network = {
@@ -17,6 +21,12 @@ virtual_network = {
     resource_group_name = "dev_rg-01"
   }
    dev_02 = {
+    name = "web_vnet"
+    location = "westus"
+    address_space = ["172.32.0.0/24"]
+    resource_group_name = "dev_rg-01"
+  }
+  dev_03 = {
     name = "web_vnet"
     location = "westus"
     address_space = ["172.32.0.0/24"]
@@ -37,6 +47,11 @@ subnets = {
     resource_group_name = "dev_rg-01"
     virtual_network_name = "app_vnet"
 }
+   dev_03 = {
+    name = "backend_subnet"
+    address_prefixes = ["192.168.10.64/26"]
+    resource_group_name = "dev_rg-01"
+    virtual_network_name = "app_vnet"
 }
 
 public_ip = {
