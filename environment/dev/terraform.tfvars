@@ -69,3 +69,4 @@ network_interface = {
     ip_config_name                = "nic_web_config_name"
     private_ip_address_allocation = "Dynamic"
   }
+}
